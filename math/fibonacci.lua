@@ -1,3 +1,9 @@
+--[=====[ 
+  Fibonacci Implemntation in Lua
+  https://github.com/allalgorithms/lua
+  https://repl.it/@abranhe/Fibonacci-in-Lua
+--]=====]
+
 function fibonacci(number)
 
 	if(number < 2) then
@@ -8,10 +14,6 @@ function fibonacci(number)
 
 end
 
-
-print("fibonacci(5) = ", fibonacci(5))
-print("fibonacci(8) = ", fibonacci(8))
-print("fibonacci(13) = ", fibonacci(13))
-print("fibonacci(15) = ", fibonacci(15))
-print("fibonacci(18) = ", fibonacci(18))
-print("fibonacci(25) = ", fibonacci(25))
+for i = 1,30,1 do 
+   print(i, "= ", fibonacci(i))
+end
