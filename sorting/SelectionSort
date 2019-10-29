@@ -1,0 +1,64 @@
+-- ref: http://lua-users.org/wiki/SleepFunction
+local clock = os.clock
+function sleep(n)  -- seconds
+  local t0 = clock()
+  while clock() - t0 <= n do end
+end
+
+-- ref: https://gist.github.com/Uradamus/10323382#file-shuffle-lua
+function shuffle(tbl)
+  for i = #tbl, 2, -1 do
+    local j = math.random(i)
+    tbl[i], tbl[j] = tbl[j], tbl[i]
+  end
+  return tbl
+end
+
+function visualize(vec)
+  m = math.max(unpack(vec))
+  for i=m, 1, -1 do
+    for j=1, #vec do
+      if i <= vec[j] then
+        io.write("█")
+      else 
+        io.write(" ")
+      end
+    end 
+    print()
+  end 
+end
+
+function selectionSort(vec)
+  for i=1, #vec-1 do 
+    min = i 
+    for j=i+1, #vec do 
+      if vec[j] < vec[min] then 
+        min = j
+      end 
+    end 
+    aux = vec[i]
+    vec[i] = vec[min]
+    vec[min] = aux 
+    
+    --optional part of the code :)
+    --os.execute("cls") -- if os is windows, "clear" if os is Unix-like
+    visualize(vec)
+    print()
+    sleep(.4)
+    
+  end 
+end
+
+-- Example --
+-- --[[
+math.randomseed(os.time())
+
+size = 30
+vec = {}
+for i=1, size do
+  vec[i] = i
+end
+vec = shuffle(vec)
+selectionSort(vec)
+-- visualize(vec)
+--]]
